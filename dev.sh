@@ -85,7 +85,7 @@ case $choice in
     4)
         echo "📚 API Documentation URLs:"
         echo "   Local: http://localhost:8000/docs"
-        echo "   Railway: https://your-app-name.up.railway.app/docs"
+        echo "   Railway: https://hbiuuniversitybackendpython-production.up.railway.app/docs"
         ;;
     5)
         echo "👋 Goodbye!"

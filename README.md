@@ -69,6 +69,12 @@ AI-powered educational backend built with FastAPI, featuring comprehensive learn
    uvicorn main:app --host 0.0.0.0 --port $PORT
    ```
 
+**Production URL**: `https://hbiuuniversitybackendpython-production.up.railway.app`
+
+**API Access Points**:
+- API Documentation: `https://hbiuuniversitybackendpython-production.up.railway.app/docs`
+- Health Check: `https://hbiuuniversitybackendpython-production.up.railway.app/`
+
 ## API Documentation
 
 ### Authentication Endpoints
