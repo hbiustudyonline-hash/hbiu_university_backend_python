@@ -37,7 +37,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # CORS Configuration
 origins = [
-    "http://localhost:5173",  # Vite dev server (Base44 Frontend)
+    "http://localhost:5173",  # Vite dev server (HBIU Virtual Campus Frontend)
     "http://localhost:5174",
     "http://localhost:5175",
     "http://localhost:3000",
@@ -796,7 +796,7 @@ async def explain_concept(request: dict, current_user: dict = Depends(get_curren
     return AIResponse(**result)
 
 
-# ===== Base44 SDK Compatible Entity Routes =====
+# ===== Entity Routes (HBIU Virtual Campus) =====
 
 # Mock data for entities (in-memory storage)
 mock_users = []
@@ -804,8 +804,8 @@ mock_courses = []
 
 # Generic entity storage (in-memory for now - replace with database)
 entity_store = {
-    "User": mock_users,
-    "Course": mock_courses,
+    "User": [],
+    "Course": [],
     "Enrollment": [],
     "Assignment": [],
     "College": [],
@@ -840,7 +840,7 @@ def get_entity_store(entity_name: str):
 
 @app.get("/api/entities/{entity}")
 async def list_entities(entity: str, sort: str = "-created_at", limit: int = 100):
-    """Base44 SDK compatible - List all entities"""
+    """Entity API - List all entities"""
     try:
         store = get_entity_store(entity)
         
@@ -875,7 +875,7 @@ async def list_entities(entity: str, sort: str = "-created_at", limit: int = 100
 
 @app.get("/api/entities/{entity}/{entity_id}")
 async def get_entity(entity: str, entity_id: int):
-    """Base44 SDK compatible - Get single entity"""
+    """Entity API - Get single entity"""
     try:
         store = get_entity_store(entity)
         
@@ -905,7 +905,7 @@ async def get_entity(entity: str, entity_id: int):
 
 @app.post("/api/entities/{entity}/filter")
 async def filter_entities(entity: str, filters: dict, sort: str = "-created_at", limit: int = 100):
-    """Base44 SDK compatible - Filter entities"""
+    """Entity API - Filter entities"""
     try:
         store = get_entity_store(entity)
         
@@ -951,7 +951,7 @@ async def filter_entities(entity: str, filters: dict, sort: str = "-created_at",
 
 @app.post("/api/entities/{entity}")
 async def create_entity(entity: str, data: dict):
-    """Base44 SDK compatible - Create new entity"""
+    """Entity API - Create new entity"""
     try:
         store = get_entity_store(entity)
         
@@ -983,7 +983,7 @@ async def create_entity(entity: str, data: dict):
 
 @app.put("/api/entities/{entity}/{entity_id}")
 async def update_entity(entity: str, entity_id: int, data: dict):
-    """Base44 SDK compatible - Update entity"""
+    """Entity API - Update entity"""
     try:
         store = get_entity_store(entity)
         
@@ -1020,7 +1020,7 @@ async def update_entity(entity: str, entity_id: int, data: dict):
 
 @app.delete("/api/entities/{entity}/{entity_id}")
 async def delete_entity(entity: str, entity_id: int):
-    """Base44 SDK compatible - Delete entity"""
+    """Entity API - Delete entity"""
     try:
         store = get_entity_store(entity)
         
